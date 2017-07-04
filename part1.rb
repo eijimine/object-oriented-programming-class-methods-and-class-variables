@@ -1,6 +1,6 @@
 class BankAccount
 
-  @@interest_rate = []
+  @@interest_rate = 1.01
   @@accounts = []
 
     def initialize
@@ -15,6 +15,12 @@ class BankAccount
     def deposit(amt)
       @balance += amt
     end
+
+    def self.show
+        @@accounts.each do |account|
+          puts account.balance
+        end
+      end
 
     def withdraw(amt)
       @balance -= amt
@@ -35,8 +41,10 @@ class BankAccount
     end
 
     def self.interest_time
-      @@accounts.each do |num|
-        num * @@interest_rate
+      interest = 0.0
+      @@accounts.each do |account|
+      interest = account.balance * @@interest_rate
+        puts "#{interest}"
       end
     end
   end
@@ -45,5 +53,5 @@ my_account = BankAccount.create
 your_account = BankAccount.create
 my_account.deposit(200)
 your_account.deposit(1000)
-# puts my_account.balance
-# puts BankAccount.total_funds
+puts my_account.balance
+puts BankAccount.total_funds
