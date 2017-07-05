@@ -50,14 +50,16 @@ class Zombie
   end
 
   def self.some_die_off
-
+    die_num = rand(11)
+    die_num.time do
+      @@horde.delete(0)
+    end
   end
 
   def self.spawn
     num = rand(@@plague_level)
     num.times do
       zombie = Zombie.new(rand(@@max_speed), rand(@@max_strength))
-      puts zombie
       @@horde << zombie
     end
     @@horde
@@ -66,8 +68,8 @@ class Zombie
   def self.increase_plague_level
     plague_num = rand(3)
     @@plague_level += plague_num
+    @@plague_level
   end
 end
 
 Zombie.spawn
-puts Zombie.all
