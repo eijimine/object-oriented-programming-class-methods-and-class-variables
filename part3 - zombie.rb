@@ -25,7 +25,14 @@ class Zombie
   end
 
   def encounter
-
+    random = rand(2)
+    if random == 0
+      outrun_zombie?
+    elsif random == 1
+      survive_attack?
+    else
+      puts "You have caught the plague and turned into a zombie!"
+    end
   end
 
   def outrun_zombie?
@@ -39,7 +46,7 @@ class Zombie
   ###### Class Methods
 
   def self.all
-    @@horde
+    @@horde.count
   end
 
   def self.new_day
@@ -51,9 +58,9 @@ class Zombie
 
   def self.some_die_off
     die_num = rand(11)
-    die_num.time do
-      @@horde.delete(0)
-    end
+      @@horde.pop(die_num)
+      @@horde
+
   end
 
   def self.spawn
