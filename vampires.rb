@@ -16,7 +16,6 @@ class Vampire
   def self.create(name, age)
     new_vamp = Vampire.new(name, age)
     @@coven << new_vamp
-    binding.pry
     return new_vamp
   end
 
@@ -47,7 +46,7 @@ class Vampire
       cov.in_coffin == true
     end
   end
-#----------------------------------- stopped here
+
   def drink_blood
     @drank_blood_today = true
     return @@coven
